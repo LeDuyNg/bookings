@@ -135,11 +135,13 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
     <script src="https://unpkg.com/notie"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         const myBtn = document.getElementById("testBtn");
         myBtn.addEventListener('click', () => {
-            notify("This is my message", "warning")
+            // notify("This is my message", "warning")
+            notifyModal("title", "<em>hello, world</em>", "success", "OK")
         });
 
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -173,6 +175,15 @@
                 stay: false, // optional, default = false
                 time: 3, // optional, default = 3, minimum = 1,
                 position: "top" // optional, default = 'top', enum: ['top', 'bottom']
+            })
+        }
+
+        function notifyModal(title, text, icon, confirmButtonText) {
+            Swal.fire({
+                title: title,
+                html: text,
+                icon: icon,
+                confirmButtonText: confirmButtonText
             })
         }
     </script>
