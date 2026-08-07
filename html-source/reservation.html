@@ -12,6 +12,8 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker-bs5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+
 
 
     <style>
@@ -24,8 +26,8 @@
             font-size: 80%;
         }
 
-        .red-text {
-            color: red;
+        .notie-container {
+            box-shadow: none;
         }
     </style>
 </head>
@@ -84,13 +86,14 @@
                             <div class="row" id="reservation-dates">
                                 <div class="col">
                                     <input required class="form-control" type="text" name="start"
-                                        placeholder="Arrival date">
+                                        placeholder="Arrival date" autocomplete="off">
                                     <div class="invalid-feedback">
                                         Please provide a valid start date.
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <input required class="form-control" type="text" name="end" placeholder="Departure">
+                                    <input required class="form-control" type="text" name="end" placeholder="Departure"
+                                        autocomplete="off">
                                     <div class="invalid-feedback">
                                         Please provide a valid end date.
                                     </div>
@@ -108,12 +111,6 @@
             </div>
             </form>
 
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <p id="myParagraph">This is some text</p>
         </div>
     </div>
 
@@ -137,16 +134,12 @@
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
+    <script src="https://unpkg.com/notie"></script>
 
     <script>
-        const myEl = document.getElementById("myParagraph");
         const myBtn = document.getElementById("testBtn");
         myBtn.addEventListener('click', () => {
-            if (myEl.classList.contains("red-text")) {
-                myEl.classList.remove("red-text");
-            } else {
-                myEl.classList.add("red-text");
-            }
+            notify("This is my message", "warning")
         });
 
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -170,8 +163,18 @@
         })()
         const elem = document.getElementById("reservation-dates");
         const rangepicker = new DateRangePicker(elem, {
-            // format: "M-dd-yyyy",
-        }); 
+            // format: "M-dd-yyyy"
+        });
+
+        function notify(msg, msgType) {
+            notie.alert({
+                type: msgType, // optional, default = 4, enum: [1, 2, 3, 4, 5, 'success', 'warning', 'error', 'info', 'neutral']
+                text: msg,
+                stay: false, // optional, default = false
+                time: 3, // optional, default = 3, minimum = 1,
+                position: "top" // optional, default = 'top', enum: ['top', 'bottom']
+            })
+        }
     </script>
 </body>
 
