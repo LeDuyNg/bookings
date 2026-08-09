@@ -1,0 +1,32 @@
+.my-footer {
+    height: 5em;
+    background-color: black;
+    margin-top: 1.5em;
+    padding: 1em;
+    color: white;
+    font-size: 80%;
+}
+
+.notie-container {
+    box-shadow: none;
+}
+
+/* Force the datepicker to the very front */
+.datepicker, 
+.datepicker-picker, 
+.datepicker-dropdown {
+    z-index: 10000 !important;
+}
+
+/* Ensure the SweetAlert content allows the calendar to float above the buttons */
+.swal2-container {
+    z-index: 1050 !important; 
+}
+.swal2-html-container {
+    z-index: 9999 !important;
+    overflow: visible !important;
+}
+
+.room-image {
+    max-width: 50%;
+}
